@@ -1,1 +1,11 @@
-#hola mundo
+def menuPrincipal():
+    opcion = ''
+    while opcion != 'S':
+        print("************************\n",
+        "A. \n",
+        "B. \n",
+        "C. \n",
+        "D. \n",
+        "E. \n",
+        "S. Salir\n",
+        )
