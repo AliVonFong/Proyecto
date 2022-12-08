@@ -1,7 +1,7 @@
 def menuPrincipal():
     opcion = ''
     while opcion != 'S':
-        print("************************\n",
+        print("Banco Fidélitas\n",
         "A. \n",
         "B. \n",
         "C. \n",
@@ -9,4 +9,31 @@ def menuPrincipal():
         "E. \n",
         "S. Salir\n",
         )
-        #ffffffffffff1ddd
+        opcion = str(input()).upper()
+        if opcion == 'A':
+            matriz = llenarMatriz(matriz)
+            print("La matriz se llenó exitosamente")
+        elif opcion == 'B':
+            if len(matriz) != 0:
+                leerMatriz(matriz)
+            else:
+                print("Debe llenar primero la matriz")
+        elif opcion == 'C':
+            if len(matriz) != 0:
+                ordenarMatriz(matriz)
+            else:
+                print("Debe llenar primero la matriz")
+        elif opcion == 'D':
+            if len(matriz) != 0:
+                modificarValor(matriz)
+            else:
+                print("Debe llenar primero la matriz")
+        elif opcion == 'E':
+            if len(matriz) != 0:
+                datosEstadisticos(matriz)
+            else:
+                print("Debe llenar primero la matriz")
+        elif opcion == 'S':
+            print("Gracias por usar la aplicacion")
+        else:
+            print("La opcion digitada es incorrecta")
