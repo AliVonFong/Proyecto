@@ -2,7 +2,7 @@ def menuPrincipal():
     opcion = ''
     while opcion != 'S':
         print("Banco Fidélitas\n",
-        "A. \n",
+        "A. Ingresar Usuario\n",
         "B. \n",
         "C. \n",
         "D. \n",
