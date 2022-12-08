@@ -36,4 +36,3 @@ def menuPrincipal():
         elif opcion == 'S':
             print("Gracias por usar la aplicacion")
         else:
-            print("La opcion digitada es incorrecta")
