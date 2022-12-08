@@ -2,13 +2,12 @@ def menuPrincipal():
     opcion = ''
     while opcion != 'S':
         print("************************\n",
-        "A.Ingresar nombre \n",
+        "A. \n",
         "B. \n",
         "C. \n",
         "D. \n",
         "E. \n",
         "S. Salir\n",
         )
-
-
-        #hola hola
+        
+menuPrincipal()
