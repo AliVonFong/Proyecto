@@ -21,15 +21,151 @@ def inicio():
             menuModuloUsuario(opcionUsuario)
         if(opcion == 3):
             print("Gracias por utilizar nuestros servicios")
+#Modulo de Administración (En progreso)
+def menuModuloAdministracion(opcionAdmin):
+    identificacion = {}
+    nombre = {}
+    puestoLaboral = {}
+    contraseña = {}
+    añoDeIngreso = {}
+    bloqueado = {}
+    opcion = 0
+    while opcion != 3:
+        print("Módulo de Administración\n",
+        "1. Crear nuevo usuario\n",
+        "2. Iniciar sesión\n",
+        "3. Regresar\n",
+        )
+        opcion = int(input())
+        while opcion > 3 or opcion < 1:
+            print("Opción incorrecta ingrese un número que sea del 1 al 3: ")
+            opcion = int(input())
+        if opcion == 1:
+            crearUsuarioAdmin(identificacion,nombre,puestoLaboral,contraseña,añoDeIngreso,bloqueado)
+        elif opcion == 2:
+            inicioSesionAdmin(identificacion,nombre,puestoLaboral,contraseña,añoDeIngreso,bloqueado)
+        elif opcion == 3:
+            opcionAdmin = 0
+    return opcionAdmin
 #Funciones del Módulo de Administración
-#Completas
+def crearUsuarioAdmin(identificacion,nombre,puestoLaboral,contraseña,añoDeIngreso,bloqueado):
+    continuar = "Si"
+    opcion = 0
+    f = len(identificacion)
+    while continuar != "No":
+        print("Ingrese su número de Identificación:")
+        identificacion[f] = int(input())
+        print("Ingrese su Nombre: ")
+        nombre[f] = str(input())
+        print("Ingrese su puesto laboral ")
+        puestoLaboral[f] = str(input())
+        print("Ingrese la contraseña: ")
+        contraseña[f] = str(input())
+        print("Ingrese el año de ingreso:")
+        añoDeIngreso[f] = int(input())
+        bloqueado[f] = 0
+        print("Desea ingresar otro usuario ?\n",
+        "Ingrese 1 para continuar\n",
+        "Ingrese 2 para terminar y regresar\n",
+        )
+        opcion = int(input())
+        if opcion == 1:
+            continuar = "Si"
+            f = f + 1
+        elif opcion == 2:
+            continuar = "No"
+    return identificacion,nombre,puestoLaboral,contraseña,añoDeIngreso,bloqueado
 
-#Incompletas
-def crearUsuarioAdmin():
-    usuario=0
-def inicioSesionAdmin():
-    usuario=0
-def modificarUsuarioAdmin():
+def inicioSesionAdmin(identificacion,nombre,puestoLaboral,contraseña,añoDeIngreso,bloqueado):
+    opcionU = 0
+    comprobarID = ""
+    comprobarContraseña = ""
+    continuarU = "Si"
+    while continuarU != "No":
+        print("Identificación:")
+        comprobarID = int(input())
+        for f in range(0, len(identificacion)):
+            while bloqueado[identificacion] == 1:
+                print("El usuario esta bloqueado ingrese otra ID:")
+                comprobarID = int(input())
+            while comprobarID != identificacion[f]:
+                print("Ese usuario no existe")
+                print("Desea continuar intentando ingresar el usuario ?\n",
+                "Ingrese 1 para continuar\n",
+                "Ingrese 2 para terminar y regresar\n",
+                )
+                opcionU = int(input())
+                if opcionU == 1:
+                    continuarU = "Si"
+                    print("Identificación:")
+                    comprobarID = int(input())
+                elif opcionU == 2:
+                    continuarU = "No"
+        intentos = 0
+        opcionC = 0
+        continuarC = "Si"
+        print("Contraseña:")
+        comprobarContraseña = str(input())
+        if comprobarContraseña == contraseña[f]:
+            sesionAdmin(identificacion,nombre,puestoLaboral,contraseña,añoDeIngreso,bloqueado)
+        else:
+            intentos = 1
+            while continuarC != "No":
+                while comprobarContraseña != contraseña[f]:
+                    if intentos == 3:
+                        print("Usuario bloqueado")
+                        bloqueado[f] = 1
+                        continuarC = "No"
+                        comprobarContraseña = contraseña[f]
+                    while intentos != 3:   
+                        print("Contraseña incorrecta")
+                        print("Desea continuar intentando ingresar la contraseña ?\n",
+                        "Ingrese 1 para continuar\n",
+                        "Ingrese 2 para terminar y regresar\n",
+                        )
+                        opcionC = int(input())
+                        if opcionC == 1:
+                            continuarC = "Si"
+                            print("Contraseña:")
+                            comprobarContraseña = str(input())
+                            intentos = intentos + 1
+                        elif opcionC == 2:
+                            continuarC = "No"
+    return identificacion,nombre,puestoLaboral,contraseña,añoDeIngreso,bloqueado
+        
+def desbloquearUsuarioAdmin():
+    usuario = 0
+#Dentro de un Usuario
+def sesionAdmin(identificacion,nombre,puestoLaboral,contraseña,añoDeIngreso,bloqueado):
+    opcion = 0
+    while opcion != 6:
+        print("Sesion de Admin\n",
+        "1. Modificar usuario\n",
+        "2. Desbloquear usuario\n",
+        "3. Ingresar cliente\n",
+        "4. Ingresar o extraer dinero\n",
+        "5. Solicitar reportes\n",
+        "6. Regresar\n",
+        )
+        opcion = int(input())
+        while opcion > 5 or opcion < 1:
+            print("Opción incorrecta ingrese un número que sea del 1 al 5: ")
+            opcion = int(input())
+        if opcion == 1:
+            modificarUsuarioAdmin(identificacion,nombre,puestoLaboral,contraseña,añoDeIngreso,bloqueado)
+        elif opcion == 2:
+            ingresarClienteAdmin()
+        elif opcion == 3:
+            administradorDineroAdmin()
+        elif opcion == 4:
+            desbloquearUsuarioAdmin(identificacion,nombre,puestoLaboral,contraseña,añoDeIngreso,bloqueado)
+        elif opcion == 5:
+            solicitarReportesAdmin()
+        elif opcion == 6:
+            opcionAdmin = 0
+    return opcionAdmin
+#Funciones Usuario Admin
+def modificarUsuarioAdmin(identificacion,):
     usuario=0
 def ingresarClienteAdmin():
     usuario=0
@@ -37,49 +173,20 @@ def administradorDineroAdmin():
     usuario=0
 def solicitarReportesAdmin():
     usuario=0
-def desbloquearUsuarioAdmin():
-    usuario=0
 
-#Modulo de Administración (En progreso)
-def menuModuloAdministracion(opcionAdmin):
-    opcion = 0      
-    while opcion != 8:
-        print("Módulo de Administración\n",
-        "1. Crear nuevo usuario\n",
-        "2. Iniciar sesión\n",
-        "3. Modificar usuario\n",
-        "4. Ingresar o cliente\n",
-        "5. Ingresar o extraer dinero\n",
-        "6. Solicitar reportes\n",
-        "7. Desbloquear usuario\n",
-        "8. Regresar\n",
-        )
-        opcion = int(input())
-        while opcion > 8 or opcion < 1:
-            print("Opción incorrecta ingrese un número que sea del 1 al 8: ")
-            opcion = int(input())
-        if opcion == 1:
-            crearUsuarioAdmin()
-        elif opcion == 2:
-            inicioSesionAdmin()
-        elif opcion == 3:
-            modificarUsuarioAdmin()
-        elif opcion == 4:
-            ingresarClienteAdmin()
-        elif opcion == 5:
-            administradorDineroAdmin()
-        elif opcion == 6:
-            solicitarReportesAdmin()
-        elif opcion == 7:
-            desbloquearUsuarioAdmin()
-        elif opcion == 8:
-            opcionAdmin = 0
-    return opcionAdmin
-#Funciones del Módulo de Administración
-#Completas
+
+
+
+
+
+
+
+
+
+
+
 
 #Incompletas
-
 #Modulo de Usuario (En progreso)
 def menuModuloUsuario(opcionUsuario):
     opcion = 0      
@@ -88,7 +195,7 @@ def menuModuloUsuario(opcionUsuario):
         "1. Crear nuevo usuario\n",
         "2. Iniciar sesión\n",
         "3. Modificar usuario\n",
-        "4. Ingresar o cliente\n",
+        "4. Ingresar cliente\n",
         "5. Ingresar o extraer dinero\n",
         "6. Solicitar reportes\n",
         "7. Desbloquear usuario\n",
